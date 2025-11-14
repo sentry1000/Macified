@@ -1,7 +1,7 @@
  /**
  * @name SentryCord
  * @author Sentry
- * @version 3.0
+ * @version 3.1
  * @description A fluent mica Discord theme inspired by Apple's macOS.
 **/
 
@@ -16,6 +16,7 @@
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 @import url("https://raw.githubusercontent.com/acheronx0577/Better-Compact-Command-Menu-With-Smooth-Transition/refs/heads/main/Better%20Compact%20Command%20Menu%20With%20Smooth%20Transition.css");
+@import url('https://raw.githubusercontent.com/computer-catt/discord-themes/meow-patch-2/Theme%20code/transparent-popups.css');
 
 /* ========================================
    ROOT VARIABLES & THEME CONFIGURATION
@@ -24,11 +25,17 @@
 /* main.css */
 
 body {
-    /* font, change to '' for default discord font */
-    --font: 'SF Pro Display'; /* change to '' for default discord font */
-    --code-font: 'SF Pro Display'; /* change to '' for default discord font */
-    font-weight: 300; /* text font weight. 300 is light, 400 is normal. DOES NOT AFFECT BOLD TEXT */
-    letter-spacing: -0.05ch; /* decreases letter spacing for better readability. recommended on monospace fonts.*/
+  --font: 'SF Pro Display', 'SF Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --code-font: 'SF Pro Display', 'SF Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --blur-popup: 40px; /*Popup blur size*/
+    --opacity-popup: 0.6; /*Popup background opacity*/  
+    --radius-popup: 40px; /*Popup border radius*/
+    --radius-context: 20px; /*Context menu popups radius*/
+    /*--pop-up-color: black; /*uncomment for custom Popup color*/ 
+    /*--context-menu-border: 1px solid red; /*uncomment for custom border*/
+
+    font-family: var(--font) !important;
+    font-weight: 600 !important; /* Semibold */
 
     /* sizes */
     --gap: 8px; /* spacing between panels */
@@ -844,19 +851,6 @@ li[class*="messageListItem"]:hover {
     overflow: hidden !important;
 }
 
-/* Ensure the background fills the entire rounded area */
-.chatContent_f75fb0::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(15, 15, 15, 0.15);
-    border-radius: inherit;
-    z-index: -1;
-}
-
 /* Add subtle background to member list panel */
 .membersWrap_c8ffbb,
 .container_c8ffbb {
@@ -936,7 +930,6 @@ li[class*="messageListItem"]:hover {
 .container_a45028,
 .wrapper_a45028,
 .customTheme_d125d2,
-.auto_d125d2,
 .disableScrollAnchor_d125d2,
 .managedReactiveScroller_d125d2,
 .inner_a45028 {
@@ -1041,3 +1034,142 @@ li[class*="messageListItem"]:hover {
     -webkit-filter: none !important;
 }
 
+/* Coloured Embeds */
+.embedFull__623de {
+    overflow: hidden;
+
+    &::before {
+        top: -1px;
+        content: "";
+        position: absolute;
+        border: inherit;
+        border-left-width: 100vw;
+        max-width: 100%;
+        height: calc(100% + 2px);
+        box-sizing: border-box !important;
+        opacity: 0.25;
+        z-index: 1;
+        border-radius: 0px 8px 8px 0px;
+    }
+
+    .gridContainer__623de {
+        z-index: 2;
+    }
+}
+.withAccentColor__60fa3 {
+    background: color-mix(in srgb, var(--background-surface-high), var(--__accent-color) 25%);
+}
+
+/* Better Spoilers */
+:root {
+    --spoiler-blur-hover: 8px;
+}
+[class*="attachmentContainer_"][class*="spoilerContent_"] {
+    background-color: unset;
+    &[class*="hiddenSpoiler_"] {
+        > [class*="spoilerWarning_"] {
+            transition: opacity 50ms ease;
+        }
+        [class*="imageContent_"] {
+            filter: none !important;
+            [class*="imageWrapper_"] > [class*="clickableWrapper_"] {
+                filter: blur(var(--custom-message-attachment-spoiler-blur-radius));
+                transition: filter 80ms ease-out;
+            }
+        }
+        &:hover {
+            > [class*="spoilerWarning_"] {
+                opacity: 0.2;
+            }
+            [class*="imageWrapper_"] > [class*="clickableWrapper_"] {
+                filter: blur(var(--spoiler-blur-hover));
+            }
+        }
+    }
+}
+
+/* Hide elements where data-list-item-id contains "nitro" or "shop" */
+a[data-list-item-id*="nitro"],
+a[data-list-item-id*="shop"] {
+    display: none !important;
+}
+
+/* highlight your pings */
+.blobContainer_e5445c>.wrapper_cc5dd2>.lowerBadge_cc5dd2 {
+    width: 100%;
+    height: 100%;
+    /* opacity: 50%; */
+    display: flex;
+    align-items: end;
+    justify-content: end;
+
+    .numberBadge__2b1f5 {
+        animation: 0.75s ease 0s ping-anim;
+        animation-iteration-count: 1;
+        border-radius: 10px;
+        transition: all 0.1875s ease;
+    }
+}
+
+.folderButton__48112>.wrapper_cc5dd2>.lowerBadge_cc5dd2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+
+    .numberBadge__2b1f5 {
+        animation: 0.75s ease 0s ping-anim;
+        animation-iteration-count: 1;
+        border-radius: 14px;
+        transition: all 0.1875s ease;
+    }
+}
+
+.blobContainer_e5445c:hover,
+.folderButton__48112:hover {
+    .numberBadge__2b1f5 {
+        width: 100% !important;
+        height: 100%;
+        font-size: 16px;
+    }
+}
+
+
+@keyframes ping-anim {
+
+    25% {
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+    }
+
+    75% {
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+    }
+}
+
+.wrapper__58105 {
+    opacity: 0.25;
+}
+
+/* hide menus next to mute and deafen buttons */
+div[class^=micButtonParent__] {
+  button[role="switch"] {
+    border-radius: var(--radius-sm) !important;
+    
+    ~ button {
+      display: none;
+    }
+  }
+}
+
+/* Add danger colours to dangerous user actions */
+#user-context-close-dm, #user-context-remove-friend {
+    &:is(:active, [class*="focused_"]) {
+        background-color: var(--background-feedback-critical);
+    }
+    & div { color: var(--text-feedback-critical); }
+}
