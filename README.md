@@ -4,4 +4,4 @@
 
 **In Discord settings for Vencord turn on Enable Window Transparency or it wont work as intended.**
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/03d73e58-b9a3-48f9-8a53-d1fe8afc2ebf" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/827bedfd-f70f-4b28-9d86-30b0db1d632f" />
