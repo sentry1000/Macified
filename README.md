@@ -1,7 +1,8 @@
-**Drag and drop/copy and paste the provided .css file into your theme folder for either Vencord or BetterDiscord, and enable it through the clients theme settings. Or, copy and paste the contents of SentryCord.css into QuickCSS on Vencord.**
+**Download the latest release and place in your themes folder for Vencord/BetterDiscord then enable it through settings, or use QuickCSS.**
 
-**For the transparency effect, install and run MicaForEveryone, add Discord as a rule, set the Backdrop type to either Mica or Acrylic, finally turn on Enable Blur Behind.** 
+**For the transparency effect, You need to follow these two steps:
+1 - Install and run MicaForEveryone on Windows through the microsoft store or by downloading the appinstaller from It's GitHub, run it and add Discord as a rule, set the Backdrop type to Mica, finally turn on Enable Blur Behind. 
+2. In Discord settings for Vencord turn on Enable Window Transparency or it wont work as intended.**
 
-**In Discord settings for Vencord turn on Enable Window Transparency or it wont work as intended.**
-
+**Preview:**
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/827bedfd-f70f-4b28-9d86-30b0db1d632f" />
